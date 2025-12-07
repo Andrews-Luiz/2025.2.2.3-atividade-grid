@@ -1,0 +1,416 @@
+/*
+    3. Estilização CSS3
+    - CSS Grid Layout
+    - Design Responsivo (Mobile-First)
+*/
+
+/* ------------------------------------------- */
+/* 3.3 Estilização Visual: Base e Reset */
+/* ------------------------------------------- */
+:root {
+    /* Paleta de Cores Harmônica (Exemplo) */
+    --color-primary: #0077b6;     /* Azul Forte */
+    --color-secondary: #00b4d8;   /* Azul Claro */
+    --color-text: #333333;        /* Texto Principal */
+    --color-light-text: #ffffff;  /* Texto Claro */
+    --color-background: #f8f9fa;  /* Fundo da Página */
+    --color-card-bg: #ffffff;     /* Fundo de Cards */
+    --color-shadow: rgba(0, 0, 0, 0.05);
+
+    /* Tipografia (Google Fonts) */
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+
+    /* Espaçamentos */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 32px;
+    --spacing-lg: 64px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm); /* Espaçamento lateral */
+}
+
+section {
+    padding: var(--spacing-lg) 0;
+}
+
+
+/* ------------------------------------------- */
+/* 2.1 Cabeçalho/Navegação Fixa */
+/* ------------------------------------------- */
+.header {
+    background-color: var(--color-card-bg);
+    box-shadow: 0 2px 4px var(--color-shadow);
+    position: sticky; /* Deixar fixo no topo */
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.nav a {
+    margin-left: var(--spacing-sm);
+    font-weight: 500;
+    padding: 5px 0;
+    color: var(--color-text);
+}
+
+
+/* ------------------------------------------- */
+/* 3.1 CSS Grid Layout: Seção de Apresentação (Hero) */
+/* ------------------------------------------- */
+.hero {
+    background-color: var(--color-card-bg);
+    padding: var(--spacing-lg) 0;
+}
+
+.hero-grid {
+    /* Mobile-First: Uma única coluna */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+.hero-text {
+    order: 2; /* Move o texto para baixo no mobile (opcional) */
+}
+
+.hero-image-container {
+    order: 1; /* Move a imagem para cima no mobile (opcional) */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Imagem redonda */
+    border: 5px solid var(--color-secondary);
+}
+
+.greeting {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+}
+
+.hero .title {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+}
+
+.hero .description {
+    max-width: 500px;
+    margin: 0 auto var(--spacing-md);
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-light-text);
+}
+
+
+/* ------------------------------------------- */
+/* 3.1 CSS Grid Layout: Seção de Projetos */
+/* ------------------------------------------- */
+.projects-section h2, .skills-section h2, .about-section h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 2.5rem;
+}
+
+.projects-grid {
+    /* Mobile-First: Uma coluna */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.project-card {
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card h3 {
+    padding: var(--spacing-sm) var(--spacing-sm) 0;
+    font-size: 1.5rem;
+}
+
+.project-card .category {
+    padding: 0 var(--spacing-sm);
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.project-card .project-link {
+    display: block;
+    padding: var(--spacing-sm);
+    text-align: right;
+    font-weight: 700;
+}
+
+.hidden-mobile {
+    display: none; /* Esconde no mobile para focar nos 3 primeiros */
+}
+
+
+/* ------------------------------------------- */
+/* 3.1 CSS Grid Layout: Seção de Habilidades */
+/* ------------------------------------------- */
+.skills-grid {
+    /* Mobile-First: Duas colunas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* 2 colunas no mobile */
+    gap: var(--spacing-sm);
+    text-align: center;
+}
+
+.skill-card {
+    background-color: var(--color-card-bg);
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--color-shadow);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skill-card i {
+    font-size: 3rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.skill-card h4 {
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.skill-card:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+.skill-card:hover i, .skill-card:hover h4 {
+    color: var(--color-light-text);
+}
+
+
+/* ------------------------------------------- */
+/* 2.4 Interesses Pessoais */
+/* ------------------------------------------- */
+.about-section {
+    background-color: var(--color-secondary);
+    color: var(--color-light-text);
+}
+
+.about-section h2 {
+    color: var(--color-light-text);
+}
+
+.about-section p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md);
+}
+
+.interests-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.interest-item {
+    text-align: center;
+}
+
+.interest-item i {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+
+/* ------------------------------------------- */
+/* 2.5 Rodapé e Redes Sociais */
+/* ------------------------------------------- */
+.footer {
+    background-color: var(--color-text);
+    color: var(--color-light-text);
+    padding: var(--spacing-sm) 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.social-links a {
+    color: var(--color-light-text);
+    font-size: 1.5rem;
+    margin: var(--spacing-sm) var(--spacing-xs);
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-secondary);
+}
+
+
+/* ------------------------------------------- */
+/* 3.2 Design Responsivo: Media Queries */
+/* ------------------------------------------- */
+
+/* Tablet (Breakpoint: Mínimo 768px) */
+@media (min-width: 768px) {
+    /* Ajuste da Navegação */
+    .header-content {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+    
+    /* Layout Hero */
+    .hero-grid {
+        grid-template-columns: 2fr 1fr; /* Texto maior, Imagem menor */
+        text-align: left;
+        align-items: center;
+    }
+    
+    .hero-text {
+        order: 1;
+    }
+    
+    .hero-image-container {
+        order: 2;
+    }
+
+    .hero .description {
+        margin: 0 0 var(--spacing-md) 0;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Layout Projetos: 2 colunas */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hidden-mobile {
+        display: block; /* Revela o quarto projeto */
+    }
+
+    /* Layout Skills: 3 ou 4 colunas */
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    /* Rodapé */
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Desktop (Breakpoint: Mínimo 1024px) */
+@media (min-width: 1024px) {
+    /* Layout Hero */
+    .hero .title {
+        font-size: 4rem;
+    }
+
+    /* Layout Projetos: 3 colunas */
+    .projects-grid {
+        /* Usando grid-template-columns para garantir 3 colunas fixas */
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    /* Layout Skills: 6 colunas */
+    .skills-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
